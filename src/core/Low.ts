@@ -4,8 +4,8 @@ export interface Adapter<T> {
 }
 
 export default class Low<T = unknown> {
-  #adapter: Adapter<T>
-  #data: T
+  adapter: Adapter<T>
+  data: T
 
   constructor(adapter: Adapter<T>, defaultData: T) {
     if (adapter == null) {
@@ -16,16 +16,16 @@ export default class Low<T = unknown> {
       throw new Error(`lowdb: missing parameter "defaultData"`)
     }
 
-    this.#adapter = adapter
-    this.#data = defaultData
+    this.adapter = adapter
+    this.data = defaultData
   }
 
   async read(): Promise<void> {
-    const data = await this.#adapter.read()
-    if (data) this.#data = data
+    const data = await this.adapter.read()
+    if (data) this.data = data
   }
 
   async write(): Promise<void> {
-    if (this.#data) await this.#adapter.write(this.#data)
+    if (this.data) await this.adapter.write(this.data)
   }
 }
