@@ -22,6 +22,9 @@
   "exports": {
     ".": "./dist/index.js"
   },
+  "files": [
+    "./dist/*"
+  ],
   "scripts": {
     "build": "yarn tsup",
     "lint": "eslint --ignore-path .gitignore",
