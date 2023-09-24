@@ -20,16 +20,17 @@
   "license": "MIT",
   "type": "module",
   "exports": {
-    ".": "./dist/index.js"
+    "types": "./dist/index.d.ts",
+    "import": "./dist/index.js"
   },
   "files": [
-    "./dist/*"
+    "dist/*"
   ],
   "scripts": {
     "build": "yarn tsup",
     "lint": "eslint --ignore-path .gitignore",
     "lint:fix": "yarn lint --fix",
-    "prepare": "yarn husky install && yarn build"
+    "prepare": "yarn husky install && npm run build"
   },
   "tsup": {
     "entry": [
