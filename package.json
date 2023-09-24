@@ -46,14 +46,10 @@
     "steno": "^3.0.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.6.1",
-    "@commitlint/config-conventional": "^17.6.1",
-    "@commitlint/prompt-cli": "^17.6.1",
     "@trivago/prettier-plugin-sort-imports": "^4.1.1",
     "@types/node": "^20.6.4",
     "@typescript-eslint/eslint-plugin": "^6.7.2",
     "@typescript-eslint/parser": "^6.7.2",
-    "del-cli": "^5.0.0",
     "eslint": "^8.38.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.0",
