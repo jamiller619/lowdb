@@ -3,52 +3,29 @@ export interface Adapter<T> {
   write: (data: T) => Promise<void>
 }
 
-export interface SyncAdapter<T> {
-  read: () => T | null
-  write: (data: T) => void
-}
-
-function checkArgs(adapter: unknown, defaultData: unknown) {
-  if (adapter === undefined) throw new Error('lowdb: missing adapter')
-  if (defaultData === undefined) throw new Error('lowdb: missing default data')
-}
-
-export class Low<T = unknown> {
-  adapter: Adapter<T>
-  data: T
+export default class Low<T = unknown> {
+  #adapter: Adapter<T>
+  #data: T
 
   constructor(adapter: Adapter<T>, defaultData: T) {
-    checkArgs(adapter, defaultData)
-    this.adapter = adapter
-    this.data = defaultData
+    if (adapter == null) {
+      throw new Error(`lowdb: missing parameter "adapter"`)
+    }
+
+    if (defaultData == null) {
+      throw new Error(`lowdb: missing parameter "defaultData"`)
+    }
+
+    this.#adapter = adapter
+    this.#data = defaultData
   }
 
   async read(): Promise<void> {
-    const data = await this.adapter.read()
-    if (data) this.data = data
+    const data = await this.#adapter.read()
+    if (data) this.#data = data
   }
 
   async write(): Promise<void> {
-    if (this.data) await this.adapter.write(this.data)
-  }
-}
-
-export class LowSync<T = unknown> {
-  adapter: SyncAdapter<T>
-  data: T
-
-  constructor(adapter: SyncAdapter<T>, defaultData: T) {
-    checkArgs(adapter, defaultData)
-    this.adapter = adapter
-    this.data = defaultData
-  }
-
-  read(): void {
-    const data = this.adapter.read()
-    if (data) this.data = data
-  }
-
-  write(): void {
-    if (this.data) this.adapter.write(this.data)
+    if (this.#data) await this.#adapter.write(this.#data)
   }
 }

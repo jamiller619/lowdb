@@ -1,6 +1,28 @@
 {
-  "extends": "@sindresorhus/tsconfig",
   "compilerOptions": {
-    "outDir": "./lib"
-  }
+    "rootDir": "./src",
+
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "allowSyntheticDefaultImports": true,
+
+    "lib": ["ESNext"],
+    "skipLibCheck": true,
+
+    "jsx": "preserve",
+    "noErrorTruncation": true,
+
+    "strict": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+
+    "paths": {
+      "~/*": ["./src/*"]
+    }
+  },
+  "exclude": ["node_modules", "dist"]
 }
