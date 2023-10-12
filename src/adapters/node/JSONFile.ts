@@ -10,7 +10,7 @@ export default class JSONFile<T> implements Adapter<T> {
 
   async read(): Promise<T | null> {
     const data = await this.#adapter.read()
-    if (data === null) {
+    if (data == null) {
       return null
     } else {
       return JSON.parse(data) as T
