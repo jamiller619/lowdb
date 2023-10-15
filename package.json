@@ -1,6 +1,6 @@
 {
   "name": "lowdb",
-  "version": "7.0.0",
+  "version": "7.0.3",
   "description": "Tiny local JSON database for Node & Electron",
   "keywords": [
     "database",
